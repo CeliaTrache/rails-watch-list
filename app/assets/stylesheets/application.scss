@@ -11,3 +11,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}

@@ -1,12 +1,28 @@
-<h1><%= @list.name %></h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.etimg.com/thumb/width-640,height-480,imgsize-179583,resizemode-1,msid-67005826/industry/media/entertainment/how-obsession-with-box-office-numbers-is-hurting-single-screen-cinema-owners/theater-getty.jpg);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
 
-<% @list.bookmarks.each do |bookmark| %>
-  <p>Movie: <%= bookmark.movie.title %></p>
-  <p>Comment: <%= bookmark.comment %></p>
-  <%= link_to 'Delete', delete_bookmark_path(bookmark),
-                        method: :delete,
-                        data: { confirm: "Are you sure?" } %>
-<% end %>
+<div class="container mt-2">
+  <%= link_to 'Add a movie', new_list_bookmark_path(@list), class: 'btn btn-success' %>
 
-<%= link_to 'Add a movie to the list', new_list_bookmark_path(@list) %></br>
-<%= link_to 'Back', lists_path %>
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card-trip mt-2">
+      <%= image_tag bookmark.movie.poster_url %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= bookmark.movie.title %></h2>
+          <p><%= bookmark.movie.rating %></p>
+          <p><%= bookmark.movie.overview %></p>
+          <p><%= bookmark.comment %></p>
+        </div>
+        <%= link_to 'delete', delete_bookmark_path(bookmark),
+                          method: :delete,
+                          data: { confirm: "Are you sure?" } %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
