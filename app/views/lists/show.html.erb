@@ -5,22 +5,29 @@
 </div>
 
 <div class="container mt-2">
-  <%= link_to 'Add a movie', new_list_bookmark_path(@list), class: 'btn btn-success' %>
+  <div class="row justify-content-end">
+    <%= link_to 'Add a movie', new_list_bookmark_path(@list), class: 'btn btn-flat' %>
+  </div>
 
   <div class="row justify-content-between">
       <% @list.bookmarks.each do |bookmark| %>
-      <div class="card-trip mt-2 col-6">
-        <%= image_tag bookmark.movie.poster_url %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= bookmark.movie.title %></h2>
-            <p><%= bookmark.movie.rating %></p>
+      <div class="card-container col-6">
+        <div class="card-movie my-2">
+          <%= image_tag bookmark.movie.poster_url %>
+          <div class="card-movie-infos">
+            <div class="d-flex my-2">
+              <h2><%= bookmark.movie.title %></h2>
+              <p><%= bookmark.movie.rating %></p>
+              <p><i class="fas fa-star"></i><p>
+            </div>
             <p><%= bookmark.movie.overview %></p>
-            <p><%= bookmark.comment %></p>
+            <div class="d-flex justify-content-between mt-3">
+              <p><i class="fas fa-quote-left"></i> <span><%= bookmark.comment %></span></p>
+              <%= link_to 'delete', delete_bookmark_path(bookmark),
+                                    method: :delete,
+                                    data: { confirm: "Are you sure?" } %>
+            </div>
           </div>
-          <%= link_to 'delete', delete_bookmark_path(bookmark),
-                            method: :delete,
-                            data: { confirm: "Are you sure?" } %>
         </div>
       </div>
     <% end %>

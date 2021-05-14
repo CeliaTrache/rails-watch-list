@@ -13,6 +13,16 @@
 @import "pages/index";
 
 .container {
-  width: 800px;
+  width: 900px;
   margin: 0 auto;
+  padding: 0px;
+}
+
+a {
+  color: white;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 0.6;
+  }
 }
