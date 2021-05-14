@@ -7,22 +7,25 @@
 <div class="container mt-2">
   <%= link_to 'Add a movie', new_list_bookmark_path(@list), class: 'btn btn-success' %>
 
-  <% @list.bookmarks.each do |bookmark| %>
-    <div class="card-trip mt-2">
-      <%= image_tag bookmark.movie.poster_url %>
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= bookmark.movie.title %></h2>
-          <p><%= bookmark.movie.rating %></p>
-          <p><%= bookmark.movie.overview %></p>
-          <p><%= bookmark.comment %></p>
+  <div class="row justify-content-between">
+      <% @list.bookmarks.each do |bookmark| %>
+      <div class="card-trip mt-2 col-6">
+        <%= image_tag bookmark.movie.poster_url %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= bookmark.movie.title %></h2>
+            <p><%= bookmark.movie.rating %></p>
+            <p><%= bookmark.movie.overview %></p>
+            <p><%= bookmark.comment %></p>
+          </div>
+          <%= link_to 'delete', delete_bookmark_path(bookmark),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %>
         </div>
-        <%= link_to 'delete', delete_bookmark_path(bookmark),
-                          method: :delete,
-                          data: { confirm: "Are you sure?" } %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
 </div>
 
 
