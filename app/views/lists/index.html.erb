@@ -14,7 +14,7 @@
   <div class="row mt-2">
     <% @lists.each do |list| %>
       <div class="col-6">
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.etimg.com/thumb/width-640,height-480,imgsize-179583,resizemode-1,msid-67005826/industry/media/entertainment/how-obsession-with-box-office-numbers-is-hurting-single-screen-cinema-owners/theater-getty.jpg)">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
           <%= link_to list.name, list_path(list) %>
         </div>
       </div>
